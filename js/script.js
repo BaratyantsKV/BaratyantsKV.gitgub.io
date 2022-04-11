@@ -21,6 +21,9 @@ closeOverlay.addEventListener('click', () => {
   menu.classList.remove('active');
 });
 
+$('.menu__link').on('click', function () {
+  menu.classList.remove('active');
+})
 // Modal
 $('[data-modal=consultation]').on('click', function () {
   $('.overlay, #consultation').fadeIn('slow');
