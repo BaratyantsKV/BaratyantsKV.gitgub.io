@@ -11,23 +11,28 @@ closeOverlay = document.querySelector('.menu__overlay');
 
 hamburger.addEventListener('click', () => {
   menu.classList.add('active');
+  document.body.style.overflowY = "hidden";
 });
 
 closeElem.addEventListener('click', () => {
   menu.classList.remove('active');
+  document.body.style.overflowY = "visible";
 });
 
 closeOverlay.addEventListener('click', () => {
   menu.classList.remove('active');
+  document.body.style.overflowY = "visible";
 });
 
 $('.menu__link').on('click', function () {
   menu.classList.remove('active');
+  document.body.style.overflowY = "visible";
 })
 // Modal
 $('[data-modal=consultation]').on('click', function () {
   $('.overlay, #consultation').fadeIn('slow');
   menu.classList.remove('active');
+  document.body.style.overflowY = "visible";
 });
 
 $('.modal__close').on('click', function () {
