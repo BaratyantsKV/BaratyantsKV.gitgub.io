@@ -60,3 +60,33 @@ $('.price__dropdown').on('click', 'li:not(.option__item_active)', function () {
     .addClass('option__item_active').siblings().removeClass('option__item_active')
     .closest('div.container').find('div.price__content').removeClass('price__content_active').eq($(this).index()).addClass('price__content_active');
 });
+
+const sections = document.querySelectorAll(".section");
+console.log(sections)
+const links = document.querySelectorAll(".aside_menu__item");
+console.log(links)
+
+const cb = (entries) => {
+  console.log(entries);
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+      links.forEach((link) => link.classList.remove("aside_menu__item_active"));
+      console.log
+      const activeId = entry.target.id;
+      console.log(activeId)
+      const activeLink = document.querySelector(
+        `.aside_menu__item[href="#${activeId}"]`
+      )
+      console.log(activeLink)
+      if (activeLink) {
+        activeLink.classList.add("aside_menu__item_active");
+      }
+    }
+  })
+};
+
+const sectionObserver = new IntersectionObserver(cb, {
+  threshold: [0.2, 0.5, 0.8],
+});
+
+sections.forEach((s) => sectionObserver.observe(s));
